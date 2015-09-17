@@ -1,0 +1,20 @@
+;噗浪機器人帳號的Access Token 及Access Token Secret
+[token]
+access_token = 'your access token'
+access_token_secret = 'your access token secret'
+
+;啟動或關閉對話模式（關閉後，機器人將不會對噗內的回覆作出回應）
+[mode]
+talk_mode = true
+
+;設定噗浪機器人的關鍵字及回應
+[keywords]
+keyword_list = {'早安':'早上好！','午安':'午安！','晚安':'晚安囉！'};
+
+;設定噗浪機器人的召喚關鍵詞
+summon_keywords = '出來吧'
+
+;機器人運作記錄
+[log]
+logging = true
+log_path = './ecplurkbot.log'
