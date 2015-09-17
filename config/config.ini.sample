@@ -7,13 +7,6 @@ access_token_secret = 'your access token secret'
 [mode]
 talk_mode = true
 
-;設定噗浪機器人的關鍵字及回應
-[keywords]
-keyword_list = {'早安':'早上好！','午安':'午安！','晚安':'晚安囉！'};
-
-;設定噗浪機器人的召喚關鍵詞
-summon_keywords = '出來吧'
-
 ;機器人運作記錄
 [log]
 logging = true
