@@ -1,9 +1,6 @@
 var log4js = require('log4js');
-var ini = require('ini');
 var plurk = require('plurk');
-var fs = require('fs');
-
-var config = ini.parse(fs.readFileSync('config.ini', 'utf-8'));
+var nconf = require('nconf');
 
 log4js.clearAppenders();
 log4js.loadAppender('file');
