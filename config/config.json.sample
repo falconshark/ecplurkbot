@@ -1,5 +1,7 @@
 {
   "token":{
+    "consume_key":"your consume key",
+    "consume_secret":"your consume secret",
     "access_token":"your access token",
     "access_token_secret":"your access token secret"
   },
