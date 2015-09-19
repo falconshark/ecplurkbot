@@ -1,0 +1,10 @@
+{
+  "name": "ecplurkbot",
+  "description": "Create your own plurk bot easily.",
+  "version": "0.0.1",
+  "author": "Mr.Twister<sardo.ip@sardo.work>",
+  "dependencies": {
+    "log4js":"0.6.21",
+    "plurk":"0.5.1"
+  }
+}
