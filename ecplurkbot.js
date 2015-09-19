@@ -20,15 +20,53 @@ var consumerSecret = nconf.get('token').consume_secret;
 var accessToken = nconf.get('token').access_token;
 var accessTokenSecret = nconf.get('token').access_token_secret;
 
+var summon_keywords = nconf.get('summon_keywords');
+var keywords = nconf.get('keywords');
+
 var client = new PlurkClient(true, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
-client.startComet(function (err, data, cometUrl) {
+var rec;
 
-    if (err) {
-        logger.error(err);
-        return;
-    }
+rec = checkAndRes;
 
-    logger.info('Comet channel started.');
+client.startComet(function(err, data, cometUrl) {
+
+	if (err) {
+		logger.error(err);
+		return;
+	}
+
+	logger.info('Comet channel started.');
+
+	rec(cometUrl);
 
 });
+
+function checkAndRes(reqUrl) {
+
+	client.rq('Alerts/addAllAsFriends');
+	client.comet(reqUrl, function(err, cometData, newUrl) {
+		if (err) {
+            logger.error('There are some error ! ', err);
+			rec(cometUrl);
+			return;
+		}
+        
+		var msgs = cometData.data;
+		if (msgs && Array.isArray(msgs)) {
+			msgs.filter(function(data) {
+				return (data && (data.type === 'new_plurk'));
+			}).forEach(function(data) {
+				var content = data.content_raw;
+				var reverse = content.split("").reverse().join("");
+				var arg = {
+					'plurk_id': data.plurk_id,
+					'content': reverse,
+					'qualifier': 'thinks'
+				};
+				client.rq('Responses/responseAdd', arg);
+			});
+		}
+		rec(newUrl);
+	});
+}
