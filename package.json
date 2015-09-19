@@ -6,6 +6,7 @@
   "dependencies": {
     "log4js":"0.6.21",
     "nconf":"0.7.2",
-    "plurk":"0.5.1"
+    "plurk":"0.5.1",
+    "promised-io":"0.3.5"
   }
 }
