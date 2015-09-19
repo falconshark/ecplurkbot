@@ -4,6 +4,8 @@ var nconf = require('nconf');
 nconf.file('config', __dirname + '/config/config.json')
 	.file('keywords', __dirname + '/config/keywords.json');
 
+var filter = require(__dirname + '/lib/contentfilter');
+
 var logging = nconf.get('log').logging;
 var log_path = nconf.get('log').log_path;
 
@@ -22,6 +24,9 @@ var accessTokenSecret = nconf.get('token').access_token_secret;
 
 var summon_keywords = nconf.get('summon_keywords');
 var keywords = nconf.get('keywords');
+
+var verifiyKeyword = filter.verifiyKeyword;
+var verifiySummonKeyword = filter.verifiySummonKeyword;
 
 var client = new PlurkClient(true, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
@@ -45,13 +50,14 @@ client.startComet(function(err, data, cometUrl) {
 function checkAndRes(reqUrl) {
 
 	client.rq('Alerts/addAllAsFriends');
+
 	client.comet(reqUrl, function(err, cometData, newUrl) {
 		if (err) {
             logger.error('There are some error ! ', err);
 			rec(cometUrl);
 			return;
 		}
-        
+
 		var msgs = cometData.data;
 		if (msgs && Array.isArray(msgs)) {
 			msgs.filter(function(data) {
