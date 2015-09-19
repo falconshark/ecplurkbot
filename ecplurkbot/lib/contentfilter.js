@@ -1,10 +1,12 @@
-function verifiyKeyword(list, content) {
+function verifiyKeyword(keywordList, content) {
 
-	for (var i = 0; i < list.length){
+	var keywords = Object.keys(keywordList);
 
-		if(Object.keys(list[i].keys) === content){
+	for (var i = 0; i < keywordList.length; i++){
 
-			var response = list[i][content];
+		if(keywordList.indexOf(content) === -1){
+
+			var response = keywordList[i][content];
 
 			return response;
 		}
@@ -13,17 +15,6 @@ function verifiyKeyword(list, content) {
 	}
 }
 
-function verifiySummonKeyword(config, content){
-
-	if (config.summon_keywords[content]) {
-
-		return true;
-	}
-
-	return false;
-}
-
 module.exports = {
-	'verifiyKeyword': verifiyKeyword,
-	'verifiySummonKeyword': verifiySummonKeyword
+	'verifiyKeyword': verifiyKeyword
 };
