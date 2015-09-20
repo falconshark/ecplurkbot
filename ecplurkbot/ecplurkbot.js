@@ -5,6 +5,7 @@ nconf.file('config', __dirname + '/config/config.json')
 	.file('keywords', __dirname + '/config/keywords.json');
 
 var filter = require(__dirname + '/lib/contentfilter');
+var action = require(__dirname + '/lib/action');
 
 var logging = nconf.get('log').logging;
 var log_path = nconf.get('log').log_path;
@@ -22,17 +23,16 @@ var consumerSecret = nconf.get('token').consume_secret;
 var accessToken = nconf.get('token').access_token;
 var accessTokenSecret = nconf.get('token').access_token_secret;
 
-var summon_keywords = nconf.get('summon_keywords');
-var keywords = nconf.get('keywords');
+var summon_keywords = nconf.get('summon_keywords').keywords_list;
+var keywords = nconf.get('keywords').keywords_list;
 
 var verifiyKeyword = filter.verifiyKeyword;
-var verifiySummonKeyword = filter.verifiySummonKeyword;
 
 var client = new PlurkClient(true, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
 var rec;
 
-rec = checkAndRes;
+rec = checkTL;
 
 client.startComet(function(err, data, cometUrl) {
 
@@ -47,7 +47,7 @@ client.startComet(function(err, data, cometUrl) {
 
 });
 
-function checkAndRes(reqUrl) {
+function checkTL(reqUrl) {
 
 	client.rq('Alerts/addAllAsFriends');
 
@@ -59,18 +59,21 @@ function checkAndRes(reqUrl) {
 		}
 
 		var msgs = cometData.data;
+
 		if (msgs && Array.isArray(msgs)) {
+
 			msgs.filter(function(data) {
 				return (data && (data.type === 'new_plurk'));
 			}).forEach(function(data) {
+
 				var content = data.content_raw;
-				var reverse = content.split("").reverse().join("");
-				var arg = {
-					'plurk_id': data.plurk_id,
-					'content': reverse,
-					'qualifier': 'thinks'
-				};
-				client.rq('Responses/responseAdd', arg);
+
+				var response = verifiyKeyword(keywords, content);
+
+				if(response){
+
+					action.respond(client, plurkId, response);
+				}
 			});
 		}
 		rec(newUrl);
