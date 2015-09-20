@@ -62,6 +62,8 @@ function checkTL(reqUrl) {
 
 				var content = data.content_raw;
 
+				var plurkId = data.plurk_id;
+
 				var response = filter.verifiyKeyword(keywords, content);
 
 				if(response){

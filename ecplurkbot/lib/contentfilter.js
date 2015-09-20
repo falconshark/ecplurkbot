@@ -2,18 +2,14 @@ function verifiyKeyword(keywordList, content) {
 
 	for (var i = 0; i < keywordList.length; i++){
 
-		var keywords = Object.keys(keywordList[i]);
+		var keyword = Object.keys(keywordList[i])[0];
 
-		console.log(keywords.indexOf(content));
-
-		if(keywords.indexOf(content) != -1){
+		if(keyword.search(content) != -1){
 
 			var response = keywordList[i][content];
 
 			return response;
 		}
-
-		return null;
 	}
 }
 
