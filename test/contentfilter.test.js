@@ -26,7 +26,7 @@ exports['Test verifiyKeyword'] = {
 
 	'Test keywords found(Two keywords in list)': function(test) {
 
-		var list = [{"Hello":"World!","Kagero":"Love"}];
+		var list = [{"Hello":"World!"},{"Kagero":"Love"}];
 
 		var content = "Kagero";
 
@@ -79,7 +79,7 @@ exports['Test verifiyKeyword'] = {
 
 	'Test keywords not found(two keywords in list)': function(test) {
 
-		var list = [{"Hello":"World!","Kagero":"Love"}];
+		var list = [{"Hello":"World!"},{"Kagero":"Love"}];
 
 		var content = "Kuroshio";
 
