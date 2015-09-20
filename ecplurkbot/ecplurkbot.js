@@ -26,8 +26,6 @@ var accessTokenSecret = nconf.get('token').access_token_secret;
 var summon_keywords = nconf.get('summon_keywords').keywords_list;
 var keywords = nconf.get('keywords').keywords_list;
 
-var verifiyKeyword = filter.verifiyKeyword;
-
 var client = new PlurkClient(true, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
 var rec;
@@ -68,7 +66,7 @@ function checkTL(reqUrl) {
 
 				var content = data.content_raw;
 
-				var response = verifiyKeyword(keywords, content);
+				var response = filter.verifiyKeyword(keywords, content);
 
 				if(response){
 
