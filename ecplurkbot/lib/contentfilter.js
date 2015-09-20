@@ -1,10 +1,12 @@
 function verifiyKeyword(keywordList, content) {
 
-	var keywords = Object.keys(keywordList);
-
 	for (var i = 0; i < keywordList.length; i++){
 
-		if(keywordList.indexOf(content) === -1){
+		var keywords = Object.keys(keywordList[i]);
+
+		console.log(keywords.indexOf(content));
+
+		if(keywords.indexOf(content) != -1){
 
 			var response = keywordList[i][content];
 
