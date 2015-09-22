@@ -4,7 +4,7 @@ function verifiyKeyword(keywordList, content) {
 
 		var keyword = Object.keys(keywordList[i])[0];
 
-		if(keyword.search(content) != -1){
+		if(content.search(keyword) != -1){
 
 			var response = keywordList[i][content];
 
