@@ -23,8 +23,8 @@ var consumerSecret = nconf.get('token').consume_secret;
 var accessToken = nconf.get('token').access_token;
 var accessTokenSecret = nconf.get('token').access_token_secret;
 
-var summon_keywords = nconf.get('summon_keywords').keywords_list;
-var keywords = nconf.get('keywords').keywords_list;
+var summon_keywords = nconf.get('summon_keywords');
+var keywords = nconf.get('keywords');
 
 var client = new PlurkClient(true, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
@@ -67,6 +67,10 @@ function checkTL(reqUrl) {
 				var response = filter.verifiyKeyword(keywords, content);
 
 				if(response){
+
+					logger.info('Keyword Detected!');
+					logger.info('Message: ' + content);
+					logger.info('Response: ' + response);
 
 					action.respond(client, plurkId, response);
 				}
