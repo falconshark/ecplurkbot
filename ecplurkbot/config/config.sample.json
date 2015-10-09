@@ -6,7 +6,7 @@
     "access_token_secret":"your access token secret"
   },
   "mode":{
-    "talk_mode": true
+    "talk_mode": false
   },
   "log":{
     "logging" : true,
