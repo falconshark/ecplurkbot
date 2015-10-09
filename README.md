@@ -13,6 +13,9 @@ http://nodejs.org/download/
 
 ##安裝方法
 
+###Windows
+目前作者仍未在Windows環境下測試程式運作，本部份暫時留空
+
 ###Linux/Mac OSX
 
 1.將EcPlurkBot下載到你的電腦中：
@@ -59,3 +62,18 @@ EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot
 }
 ```
 
+###keywords.sample.json
+
+```json
+{
+	"summon_keywords": {
+		"召喚詞1": ["回應1"]
+	},
+	"keywords": [
+		{"關鍵詞1": "回應1"},
+		{"關鍵詞2": "回應2"},
+		{"關鍵詞3": "回應3"},
+		{"關鍵詞4": "回應4"}
+	]
+}
+```
