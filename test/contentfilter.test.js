@@ -9,11 +9,11 @@ exports['Test verifiyKeyword'] = {
 
 		var list = [{"Hello":"World!"}];
 
-		var content = "Hello";
+		var content = "Hello World";
 
-		var result = filter.verifiyKeyword(list,content);
+		var result = filter.verifiyKeyword(list, content);
 
-		logger.debug('Keywords:' + content);
+		logger.debug('Content:' + content);
 
 		logger.debug('Response: ' + result);
 
