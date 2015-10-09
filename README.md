@@ -38,22 +38,24 @@ EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot
 
 以下是設定檔範例：
 
-**config.sample.json** 
+###config.sample.json
 
 ```json
 {
   "token":{
-    "consume_key":"your consume key",
-    "consume_secret":"your consume secret",
-    "access_token":"your access token",
-    "access_token_secret":"your access token secret"
+    "consume_key":"噗浪機器人的Consume key",
+    "consume_secret":"噗浪機器人的Consume secret",
+    "access_token":"噗浪機器人的Access token",
+    "access_token_secret":"噗浪機器人的 Access token secret"
   },
   "mode":{
-    "talk_mode": false
+    "talk_mode": false 
+    #設定是否打開對話模式，打開後噗浪機器人將會對你在噗裡的回應作出反應
   },
   "log":{
-    "logging" : true,
-    "log_path": "./ecplurkbot.log"
+    "logging" : true, #設定是否打開記錄功能，打開後程式將會把記錄檔寫入指定位置
+    "log_path": "./ecplurkbot.log" #設定記錄檔的路徑
   }
 }
 ```
+
