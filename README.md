@@ -26,14 +26,14 @@ https://github.com/dollars0427/ecplurkbot/archive/master.zip
 ```bash
 $ cd eecplurkbot-master
 ```
-3.運行下列指令：
+3.執行下列指令：
 
 ```bash
 $ npm install
 ```
 
 ##設定
-EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot前，請先將它們一一改名：
+EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot前，請先將它們一一改名並修改：
 
 1. config.sample.json => config.json
 
@@ -42,6 +42,8 @@ EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot
 以下是設定檔範例：
 
 ###config.sample.json
+
+EcPlurkBot的基本設定檔。
 
 ```json
 {
@@ -64,6 +66,8 @@ EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot
 
 ###keywords.sample.json
 
+噗浪機器人的關鍵字列表，可以自行新增。由於Json檔案格式較為嚴謹，為避免出錯建議在修改後將設定檔內容丟進 http://jsonlint.com/ 裡檢查是否有任何問題。
+
 ```json
 {
 	"summon_keywords": {
@@ -77,3 +81,39 @@ EcPlurkBot的所有設定檔皆位於config資料夾內。開始使用EcPlurkBot
 	]
 }
 ```
+
+#運行
+
+###Windows
+目前作者仍未在Windows環境下測試程式運作，本部份暫時留空
+
+###Linux/Mac OSX
+
+1.打開Terminal，進入EcPlurkBot所在資料夾：
+
+```bash
+$ cd ecplurkbot-master
+```
+
+2.執行以下指令（在前台運行）：
+
+```bash
+$ node ecplurkbot.js
+```
+
+或執行以下指令（在背景中運行）：
+
+```bash
+$ node ecplurkbot.js &
+```
+
+#單元測試
+本應用可使用Nodeunit進行單元測試，所有的測試檔皆位於test資料夾內。
+
+```bash
+$ nodeunit [測試檔檔名]
+```
+
+#回報問題
+如在使用上有任何問題，歡迎打開Issues或直接在噗浪上詢問作者：
+www.plurk.com/bluewinds0624
