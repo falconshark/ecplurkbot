@@ -82,7 +82,7 @@ EcPlurkBot的基本設定檔。
 }
 ```
 
-#運行
+##運行
 
 ###Windows
 目前作者仍未在Windows環境下測試程式運作，本部份暫時留空
@@ -107,13 +107,16 @@ $ node ecplurkbot.js
 $ node ecplurkbot.js &
 ```
 
-#單元測試
+##單元測試
 本應用可使用Nodeunit進行單元測試，所有的測試檔皆位於test資料夾內。
 
 ```bash
 $ nodeunit [測試檔檔名]
 ```
 
-#回報問題
+##版本記錄
+請參考Release頁面。
+
+##回報問題
 如在使用上有任何問題，歡迎打開Issues或直接在噗浪上詢問作者：
 www.plurk.com/bluewinds0624
