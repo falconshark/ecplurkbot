@@ -68,10 +68,6 @@ function checkTL(reqUrl) {
 
 				if(response){
 
-					logger.info('Keyword Detected!');
-					logger.info('Message: ' + content);
-					logger.info('Response: ' + response);
-
 					action.respond(client, plurkId, response);
 				}
 			});
