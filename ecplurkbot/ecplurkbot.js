@@ -4,8 +4,11 @@ var nconf = require('nconf');
 nconf.file('config', __dirname + '/config/config.json')
 	.file('keywords', __dirname + '/config/keywords.json');
 
-var filter = require(nconf.get('filter_lib').lib_path).function;
-var respond = require(nconf.get('response_lib').lib_path).function;
+var filterLib = require(nconf.get('filter_lib').lib_path);
+var respondLib = require(nconf.get('response_lib').lib_path);
+
+var filter = filterLib[nconf.get('filter_lib').function];
+var respond = respondLib[nconf.get('response_lib').function];
 
 var logging = nconf.get('log').logging;
 var log_path = nconf.get('log').log_path;
