@@ -61,7 +61,15 @@ EcPlurkBot的基本設定檔。
   "log":{
     "logging" : true, #設定是否打開記錄功能，打開後程式將會把記錄檔寫入指定位置
     "log_path": "./ecplurkbot.log" #設定記錄檔的路徑
-  }
+  },
+	"response_lib": { #進階使用者可使用自訂的回覆程式
+		"lib_path": "./lib/action.js", #外部程式檔路征
+		"function": "respond" #需要被呼叫的Function
+	},
+	"filter_lib": { #進階使用者可使用自訂的關鍵字檢測程式
+		"lib_path": "./lib/contentfilter",
+		"function": "verifiyKeyword"
+	}
 }
 ```
 
