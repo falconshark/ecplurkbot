@@ -4,8 +4,8 @@ var nconf = require('nconf');
 nconf.file('config', __dirname + '/config/config.json')
 	.file('keywords', __dirname + '/config/keywords.json');
 
-var filter = require(__dirname + '/lib/contentfilter');
-var action = require(__dirname + '/lib/action');
+var filter = require(nconf.get('filter_lib').lib_path).function;
+var respond = require(nconf.get('response_lib').lib_path).function;
 
 var logging = nconf.get('log').logging;
 var log_path = nconf.get('log').log_path;
@@ -70,11 +70,11 @@ function checkTL(reqUrl) {
 
 				var plurkId = data.plurk_id;
 
-				var response = filter.verifiyKeyword(keywords, content);
+				var response = filter(keywords, content);
 
 				if (response) {
 
-					action.respond(client, plurkId, response);
+					respond(client, plurkId, response);
 				}
 			});
 		}
