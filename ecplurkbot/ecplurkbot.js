@@ -28,18 +28,24 @@ var keywords = nconf.get('keywords');
 
 var client = new PlurkClient(true, consumerKey, consumerSecret, accessToken, accessTokenSecret);
 
-client.startComet(function(err, data, cometUrl) {
+startComet();
 
-	if (err) {
-		logger.error(err);
-		return;
-	}
+function startComet() {
 
-	logger.info('Comet channel started.');
+	client.startComet(function(err, data, cometUrl) {
 
-	checkTL(cometUrl);
+		if (err) {
+			logger.error(err);
+			setTimeout(startComet, 5000);
+			return;
+		}
 
-});
+		logger.info('Comet channel started.');
+
+		checkTL(cometUrl);
+
+	});
+}
 
 function checkTL(reqUrl) {
 
@@ -47,8 +53,8 @@ function checkTL(reqUrl) {
 
 	client.comet(reqUrl, function(err, cometData, newUrl) {
 		if (err) {
-            logger.error('There are some error ! ', err);
-			checkTL(cometUrl);
+			logger.error('There are some error ! ', err);
+			setTimeout(startComet, 5000);
 			return;
 		}
 
@@ -66,7 +72,7 @@ function checkTL(reqUrl) {
 
 				var response = filter.verifiyKeyword(keywords, content);
 
-				if(response){
+				if (response) {
 
 					action.respond(client, plurkId, response);
 				}
