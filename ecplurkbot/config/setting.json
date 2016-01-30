@@ -1,0 +1,12 @@
+{
+	"token": {
+		"consume_key": "X33dft6XPlZm",
+		"consume_secret": "yoLGO4vHCl7ihEVZt4FdFajp9771ReaU",
+		"access_token": "bQZ4YCbjVpdg",
+		"access_token_secret": "C0XGqfdKLlE9v5vEgsC0Kp60lRdH7UcO"
+	},
+	"log": {
+		"logging": true,
+		"log_path": "./ecplurkbot.log"
+	}
+}
