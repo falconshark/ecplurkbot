@@ -1,21 +1,25 @@
 #EcPlurkBot - 輕鬆製作噗浪機器人
-EcPlurkBot 是一款使用Node.js建構的應用，使用者只需幾步即可製作並架設自己的噗浪機器人。
+EcPlurkBot 是一款基於Ruby（原為Nodejs）的應用，使用者只需幾步即可製作並架設自己的噗浪機器人。
 
 ##目前進度
 * 完成基本的關鍵字檢測及回應功能。
 * 完成隨機回應功能。
 
+##未完成
+* 輸出記錄檔
+* 允許使用者編寫自己的關鍵字檢測及回覆程式
+
 ##安裝需求
-Node.js v0.10 或以上。
+Ruby v1.9.3 或以上
+Ruby Gems 2.5.0 或以上
 
-最新版本的Node.js可從以下網址取得: 
+以上兩款軟體可從以下網址取得：
 
-http://nodejs.org/download/
+Ruby: https://www.ruby-lang.org/zh_tw/downloads/
+
+Ruby Gems: https://rubygems.org/pages/download
 
 ##安裝方法
-
-###Windows
-目前作者仍未在Windows環境下測試程式運作，本部份暫時留空
 
 ###Linux/Mac OSX
 
@@ -25,12 +29,12 @@ https://github.com/dollars0427/ecplurkbot/archive/master.zip
 2.解壓縮後打開Terminal，進入EcPlurkBot所在資料夾：
 
 ```bash
-$ cd ecplurkbot-master
+$ cd ecplurkbot-master/ecplurkbot
 ```
 3.執行下列指令：
 
 ```bash
-$ npm install
+$ bundle install
 ```
 
 ##設定
@@ -48,29 +52,18 @@ EcPlurkBot的基本設定檔。
 
 ```json
 {
-  "token":{
-    "consume_key":"噗浪機器人的Consume key",
-    "consume_secret":"噗浪機器人的Consume secret",
-    "access_token":"噗浪機器人的Access token",
-    "access_token_secret":"噗浪機器人的 Access token secret"
-  },
-  "mode":{
-    "talk_mode": false 
-    #設定是否打開對話模式，打開後噗浪機器人將會對你在噗裡的回應作出反應
-  },
-  "log":{
-    "logging" : true, #設定是否打開記錄功能，打開後程式將會把記錄檔寫入指定位置
-    "log_path": "./ecplurkbot.log" #設定記錄檔的路徑
-  },
-	"response_lib": { #進階使用者可使用自訂的回覆程式
-		"lib_path": "./lib/action.js", #外部程式檔路征
-		"function": "respond" #需要被呼叫的Function
+	"token": {
+		"consume_key": "你的Plurk Consume Key",
+		"consume_secret": "你的Plurk Consume Secret",
+		"access_token": "你的Plurk Access Token",
+		"access_token_secret": "你的Plurk Access Token Secret"
 	},
-	"filter_lib": { #進階使用者可使用自訂的關鍵字檢測程式
-		"lib_path": "./lib/contentfilter",
-		"function": "verifiyKeyword"
+	"log": {
+		"logging": true,
+		"log_path": "./ecplurkbot.log"
 	}
 }
+
 ```
 
 ###keywords.sample.json
@@ -81,14 +74,11 @@ EcPlurkBot的基本設定檔。
 
 ```json
 {
-	"summon_keywords": {
-		"召喚詞1": ["回應1"]
-	},
 	"keywords": [
 		{"關鍵字1": ["回應1", "回應2"]},
 		{"關鍵字2": ["回應1", "回應2"]},
-		{"關鍵詞3": ["回應1", "回應2"]},
-		{"關鍵詞4": ["回應1", "回應2"]}
+		{"關鍵字3": ["回應1", "回應2"]},
+		{"關鍵字4": ["回應1", "回應2"]}
 	]
 }
 
@@ -96,34 +86,24 @@ EcPlurkBot的基本設定檔。
 
 ##運行
 
-###Windows
-目前作者仍未在Windows環境下測試程式運作，本部份暫時留空
-
 ###Linux/Mac OSX
 
 1.打開Terminal，進入EcPlurkBot所在資料夾：
 
 ```bash
-$ cd ecplurkbot-master
+$ cd ecplurkbot-master/ecplurkbot
 ```
 
 2.執行以下指令（在前台運行）：
 
 ```bash
-$ node ecplurkbot.js
+$ ruby ecplurkbot.rb
 ```
 
 或執行以下指令（在背景中運行）：
 
 ```bash
-$ node ecplurkbot.js &
-```
-
-##單元測試
-本應用可使用Nodeunit進行單元測試，所有的測試檔皆位於test資料夾內。
-
-```bash
-$ nodeunit [測試檔檔名]
+$ screen ruby ecplurkbot.rb
 ```
 
 ##版本記錄
