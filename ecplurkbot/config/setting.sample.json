@@ -1,0 +1,12 @@
+{
+	"token": {
+		"consume_key": "你的Plurk Consume Key",
+		"consume_secret": "你的Plurk Consume Secret",
+		"access_token": "你的Plurk Access Token",
+		"access_token_secret": "你的Plurk Access Token Secret"
+	},
+	"log": {
+		"logging": true,
+		"log_path": "./ecplurkbot.log"
+	}
+}
